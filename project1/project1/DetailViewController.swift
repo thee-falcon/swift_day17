@@ -13,14 +13,15 @@ class DetailViewController: UIViewController {
     // UIImageView: is responsible for viewing images – perfect!
     //  !: This means that that UIImageView may be there or it may not be there.
     @IBOutlet var imageView: UIImageView!
+    var selectedImage: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        if let imageToLoad = selectedImage {
+            imageView.image = UIImage(named: imageToLoad)
+        }
     }
-    
-
     /*
     // MARK: - Navigation
 

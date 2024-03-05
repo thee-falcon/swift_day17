@@ -53,4 +53,24 @@ class ViewController: UITableViewController {
         cell.textLabel?.text = pictures[indexPath.row]
         return cell
     }
+    /*
+     DetailViewController: that will hold the name of the image to load.
+     IndexPath: that tells us what row we’re working with.
+     didSelectRowAt: method so that it loads a DetailViewController from the storyboard.
+     we’ll fill in viewDidLoad() inside DetailViewController so that it loads an image into its image view based on the name we set earlier.
+     */
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        /*
+         When we created the detail view controller, you gave it the storyboard ID “Detail”,
+         which allows us to load it from the storyboard using a method called instantiateViewController(withIdentifier:).
+         instantiateViewController() has the return type UIViewController.
+         */
+        // 1: try loading the "Detail" view controller and typecasting it to be DetailViewController.
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+            // 2: success! Set its selectedImage property.
+            vc.selectedImage = pictures[indexPath.row]
+            // 3: now push it onto the navigation controller.
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }
