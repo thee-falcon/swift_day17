@@ -18,6 +18,11 @@ class ViewController: UITableViewController {
         // This super call means “tell Apple’s UIViewController to run its own code before I run mine.
         super.viewDidLoad()
         
+        // title
+        title = "Storm Viewer"
+        // That enables large titles across our app.
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
         // This is a data type that lets us work with the filesystem,
         // and in our case we'll be using it to look for files.
         let fm = FileManager.default
